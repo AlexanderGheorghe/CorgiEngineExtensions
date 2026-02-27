@@ -8,4 +8,8 @@ public class TeleportPoint : MonoBehaviour
 
     private void OnEnable() => TeleportPoints.Add(this);
     private void OnDisable() => TeleportPoints.Remove(this);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out TeleportHealth teleportHealth)) teleportHealth.TeleportPoint = this;
+    }
 }
